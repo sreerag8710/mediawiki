@@ -1,0 +1,35 @@
+{
+  "lab.local": {
+    "connection":{
+      "server": "dc.lab.local",
+      "port": 636,
+      "enctype": "ssl",
+      "user": "CN=mediawiki,CN=Users,DC=lab,DC=local",
+      "pass": "P@ssw0rd",
+      "basedn": "DC=lab,DC=local",
+      "userbasedn": "DC=lab,DC=local",
+      "usernameattribute": "samaccountname",
+      "searchattribute": "samaccountname",
+      "realnameattribute": "cn",
+      "emailattribute": "mail",
+      "groupbasedn": "DC=lab,DC=local",
+      "grouprequest": "MediaWiki\\Extension\\LDAPProvider\\UserGroupsRequest\\UserMemberOf::factory",
+      "groupmemberattribute": "memberOf"
+    },
+    "authorization": {
+      "rules": {
+        "groups": {
+          "required": [
+            "CN=wiki-users,CN=Users,DC=lab,DC=local"
+          ]
+        }
+      }
+    },
+    "userinfo": {
+    	"attributes-map": {
+	    "email": "mail",
+	    "realname": "cn"
+	}
+    }
+  }
+}
